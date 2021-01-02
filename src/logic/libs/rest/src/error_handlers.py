@@ -1,7 +1,7 @@
 from flask import Blueprint
 from werkzeug.exceptions import HTTPException
 
-from logic.libs.excepcion.excepcion import AppException, UnknownException
+from logic.libs.exception.exception import AppException, UnknownException
 from logic.libs.logger.logger import logger
 
 error_handler_bp = Blueprint('handlers', __name__)
@@ -15,10 +15,10 @@ def handle_exception(httpe):
 @error_handler_bp.app_errorhandler(Exception)
 def handle_exception(e: Exception):
     logger().exception(e)
-    return UnknownException(e).respuesta_json()
+    return UnknownException(e).rest_response()
 
 
 @error_handler_bp.app_errorhandler(AppException)
 def handle_business_exception(ae: AppException):
     logger().warning(ae.to_json())
-    return ae.respuesta_json()
+    return ae.rest_response()

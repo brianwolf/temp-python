@@ -9,8 +9,7 @@ from dataclasses import dataclass
 from enum import Enum
 
 from flask import jsonify
-
-from logic.libs.excepcion.src import config
+from logic.libs.exception.src import config
 
 
 @dataclass
@@ -25,27 +24,29 @@ class AppException(Exception):
     mensaje: contiene informacion extra en formato texto para una mayor informacion, esto es para quien use la api,
     un ejemplo puede ser: 'el usuario ya existe en la base de datos'
     """
-    codigo: Enum
-    mensaje: str = None
-    error: Exception = None
+    code: Enum
+    msj: str = None
+    exception: Exception = None
 
     def to_json(self) -> dict:
-        d = {'codigo': self.codigo.value, 'mensaje': self.mensaje}
-        if self.error:
-            d['error'] = str(self.error)
+        d = {'code': self.code.value, 'msj': self.msj}
+        if self.exception:
+            d['exception'] = str(self.exception)
         return d
 
-    def respuesta_json(self) -> (dict, int):
-        return jsonify(self.to_json()), config.HTTP_STATUS_ERROR_NEGOCIO
+    def rest_response(self) -> (dict, int):
+        return jsonify(self.to_json()), config.HTTP_STATUS_BUSINESS_ERROR
 
 
 @dataclass
 class UnknownException(Exception):
+    """
+    """
     error: Exception
 
     def to_json(self) -> dict:
-        d = {'causa': str(self.error)}
+        d = {'cause': str(self.error)}
         return d
 
-    def respuesta_json(self) -> (dict, int):
-        return jsonify(self.to_json()), config.HTTP_STATUS_ERROR_DESCONOCIDO
+    def rest_response(self) -> (dict, int):
+        return jsonify(self.to_json()), config.HTTP_STATUS_UNKNOW_ERROR
