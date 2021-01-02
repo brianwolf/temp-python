@@ -7,22 +7,22 @@ Crea logs de la aplicacion
 import logging
 
 from logic.libs.logger.src import config
-from logic.libs.logger.src.archivo import crear_log
+from logic.libs.logger.src.file import make_logger
 
 
-def iniciar(directorio: str, nivel: str):
+def setup(path: str, default_level: str):
     """
     Configura el logger para el proyecto
     """
-    config.DIRECTORIO_LOGS = directorio
-    config.NIVEL_LOGS = nivel
+    config.PATH = path
+    config.DEFAULT_LEVEL = default_level
 
 
-def log(nombre: str = 'app') -> logging.Logger:
+def logger(nombre: str = 'app') -> logging.Logger:
     """
     Devuelve un objeto logger por un nombre, en caso de que no exista lo crea
     """
     if nombre not in config.LOGGERS:
-        config.LOGGERS[nombre] = crear_log(nombre)
+        config.LOGGERS[nombre] = make_logger(nombre)
 
     return config.LOGGERS[nombre]

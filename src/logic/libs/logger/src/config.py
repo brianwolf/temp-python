@@ -1,4 +1,4 @@
 LOGGERS = {}
 
-DIRECTORIO_LOGS = 'logs'
-NIVEL_LOGS = 'INFO'
+PATH = 'logs'
+DEFAULT_LEVEL = 'INFO'

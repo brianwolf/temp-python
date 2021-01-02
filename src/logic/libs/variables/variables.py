@@ -9,7 +9,7 @@ en caso de que no, usa la del archivo
 import os
 from dataclasses import dataclass
 from enum import Enum
-from typing import Any, Dict, List
+from typing import Dict, List
 
 from logic.libs.variables.src import config
 from logic.libs.variables.src.file import make_vars_dict

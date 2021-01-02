@@ -3,7 +3,7 @@ from datetime import date
 from flask.json import JSONEncoder
 
 
-class JSONEncoderPersonalizado(JSONEncoder):
+class JSONEncoderCustom(JSONEncoder):
     def default(self, obj):
         try:
             if isinstance(obj, date):
