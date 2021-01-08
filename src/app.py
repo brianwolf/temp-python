@@ -10,7 +10,7 @@ setup_loggers()
 
 
 app = Flask(__name__)
-rest.setup(app, 'logic/app/api')
+rest.setup(app, 'logic/app/routes')
 
 
 if __name__ == "__main__":

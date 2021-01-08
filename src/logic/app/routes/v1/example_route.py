@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from flask import Blueprint, jsonify, render_template, request
-from logic.app.api.v1.dto import example_dto
+from logic.app.routes.v1.dto import example_dto
 from logic.app.error.example_error import ExampleError
 from logic.app.model.example import Example
 from logic.app.service.produce import example_service
