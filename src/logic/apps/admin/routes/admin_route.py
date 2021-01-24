@@ -17,6 +17,6 @@ def alive():
     return jsonify({"state": "alive"})
 
 
-@blue_print.route('/')
-def index():
-    return render_template("index.html")
+# @blue_print.route('/')
+# def index():
+#     return render_template("index.html")
