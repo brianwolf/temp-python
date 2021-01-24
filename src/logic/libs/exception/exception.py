@@ -10,6 +10,7 @@ from enum import Enum
 
 from flask import jsonify
 from logic.libs.exception.src import config
+from typing import Dict
 
 
 @dataclass
@@ -34,7 +35,7 @@ class AppException(Exception):
             d['exception'] = str(self.exception)
         return d
 
-    def rest_response(self) -> (dict, int):
+    def rest_response(self) -> Dict[dict, int]:
         return jsonify(self.to_json()), config.HTTP_STATUS_BUSINESS_ERROR
 
 
@@ -48,5 +49,5 @@ class UnknownException(Exception):
         d = {'cause': str(self.error)}
         return d
 
-    def rest_response(self) -> (dict, int):
+    def rest_response(self) -> Dict[dict, int]:
         return jsonify(self.to_json()), config.HTTP_STATUS_UNKNOW_ERROR
