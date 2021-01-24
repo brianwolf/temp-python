@@ -1,10 +1,7 @@
-from datetime import datetime
-
-from flask import Blueprint, jsonify, render_template, request
-from logic.apps.routes.v1.dto import example_dto
-from logic.apps.error.example_error import ExampleError
-from logic.apps.model.example import Example
-# from logic.apps.service.produce import example_service
+from flask import Blueprint, jsonify, request
+from logic.apps.example.errors.example_error import ExampleError
+from logic.apps.example.routes.v1.dtos import example_dto
+from logic.apps.example.services import example_service
 from logic.libs.exception.exception import AppException
 
 blue_print = Blueprint('example', __name__, url_prefix='/api/v1')
@@ -13,9 +10,9 @@ blue_print = Blueprint('example', __name__, url_prefix='/api/v1')
 @blue_print.route('/examples', methods=['GET'])
 def get_example():
 
-    # example = example_service.get_example()
+    example = example_service.get_example()
 
-    return jsonify(example_dto.example_to_json({}))
+    return jsonify(example_dto.example_to_json(example))
 
 
 @blue_print.route('/examples', methods=['POST'])

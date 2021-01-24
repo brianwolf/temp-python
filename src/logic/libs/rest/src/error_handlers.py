@@ -1,8 +1,7 @@
 from flask import Blueprint
-from werkzeug.exceptions import HTTPException
-
 from logic.libs.exception.exception import AppException, UnknownException
 from logic.libs.logger.logger import logger
+from werkzeug.exceptions import HTTPException
 
 error_handler_bp = Blueprint('handlers', __name__)
 

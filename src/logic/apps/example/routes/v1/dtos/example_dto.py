@@ -1,9 +1,10 @@
 import json
+from dataclasses import dataclass
 from datetime import datetime
 from typing import Dict
 from uuid import UUID
 
-from logic.apps.model.example import Example
+from logic.apps.example.models.example import Example
 
 
 def example_to_json(o: Example) -> Dict[str, object]:
