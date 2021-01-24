@@ -14,7 +14,12 @@ from logic.libs.rest.src.json import JSONEncoderCustom
 
 def setup(app: Flask, routes_path: str):
     """
-    Configura el logger para el proyecto
+    Configura flask cargandole los blueprints dentro de la ruta parametro y handlers de errores.
+    Es posible enviarle un regex como ruta tal que asi:
+
+    ```
+    'logic/apps/*/routes'
+    ```
     """
     app.register_blueprint(error_handler_bp)
     app.json_encoder = JSONEncoderCustom

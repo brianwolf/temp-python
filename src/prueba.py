@@ -11,7 +11,7 @@ import os
 
 archivos = []
 
-for root, dirs, files in os.walk("./logic/app/routes"):
+for root, dirs, files in os.walk("logic/app/routes"):
 
     if '__pycache__' in root or not files:
         continue
@@ -24,3 +24,8 @@ for root, dirs, files in os.walk("./logic/app/routes"):
     # print(root, files, '\n\n')
 
 print(archivos)
+
+
+
+import glob
+print(glob.glob('logic/app/*/v1'))

@@ -1,6 +1,6 @@
 from enum import Enum
 
-from logic.app.configs.variables import Variable
+from logic.apps.configs.variables import Variable
 from logic.libs.variables.variables import dame
 
 

@@ -3,7 +3,7 @@ from enum import Enum
 from typing import List
 from uuid import UUID
 
-from logic.app.models.modelos import Archivo, TipoArchivo
+from logic.apps.models.modelos import Archivo, TipoArchivo
 from logic.libs.excepcion.excepcion import AppException
 from logic.libs.sqlite import sqlite
 

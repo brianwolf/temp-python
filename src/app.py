@@ -1,7 +1,7 @@
 from flask import Flask
 
-from logic.app.config.logger import setup_loggers
-from logic.app.config.variables import Vars, setup_vars
+from logic.apps.config.logger import setup_loggers
+from logic.apps.config.variables import Vars, setup_vars
 from logic.libs.rest import rest
 from logic.libs.variables.variables import get_var
 
@@ -10,7 +10,7 @@ setup_loggers()
 
 
 app = Flask(__name__)
-rest.setup(app, 'logic/app/routes')
+rest.setup(app, 'logic/apps/routes')
 
 
 if __name__ == "__main__":

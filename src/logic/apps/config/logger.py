@@ -1,4 +1,4 @@
-from logic.app.config.variables import Vars
+from logic.apps.config.variables import Vars
 from logic.libs.logger.logger import setup
 from logic.libs.variables.variables import get_var
 
