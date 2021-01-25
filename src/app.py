@@ -1,5 +1,3 @@
-from flask import Flask
-
 from logic.apps.config.logger import setup_loggers
 from logic.apps.config.rest import setup_rest
 from logic.apps.config.variables import Vars, setup_vars

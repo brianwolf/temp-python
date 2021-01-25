@@ -7,9 +7,6 @@ Objetos genericos para manejo de exepciones en los proyectos
 
 from dataclasses import dataclass
 from enum import Enum
-
-from flask import jsonify
-from logic.libs.exception.src import config
 from typing import Dict
 
 
@@ -29,14 +26,11 @@ class AppException(Exception):
     msj: str = None
     exception: Exception = None
 
-    def to_json(self) -> dict:
+    def to_json(self) -> Dict[str, object]:
         d = {'code': self.code.value, 'msj': self.msj}
         if self.exception:
             d['exception'] = str(self.exception)
         return d
-
-    def rest_response(self) -> Dict[dict, int]:
-        return jsonify(self.to_json()), config.HTTP_STATUS_BUSINESS_ERROR
 
 
 @dataclass
@@ -45,9 +39,6 @@ class UnknownException(Exception):
     """
     error: Exception
 
-    def to_json(self) -> dict:
+    def to_json(self) -> Dict[str, object]:
         d = {'cause': str(self.error)}
         return d
-
-    def rest_response(self) -> Dict[dict, int]:
-        return jsonify(self.to_json()), config.HTTP_STATUS_UNKNOW_ERROR

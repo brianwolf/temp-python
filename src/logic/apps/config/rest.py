@@ -1,31 +1,24 @@
 from flask import Flask
-from flask_restplus import Api, Resource
+from flask_restplus import Api
 from logic.libs.rest import rest
 
-_app = None
-_blueprints_path = 'logic/apps/*/routes'
+api = None
+app = None
+
+blueprints_path = 'logic/apps/*/routes'
 
 
 def setup_rest(name: str) -> Flask:
 
-    global _app, _blueprints_path
+    global app, blueprints_path, api
 
-    _app = Flask(name)
-    rest.setup(_app, _blueprints_path)
+    app = Flask(name)
+    app.config.setdefault('ERROR_INCLUDE_MESSAGE', False)
 
-    swagger = Api(app=_app)
-    name_space = swagger.namespace('main', description='Main APIs')
+    api = Api(app)
 
-    @name_space.route("/docs")
-    class MainClass(Resource):
-        def get(self):
-            return {
-                "status": "Got new data"
-            }
+    rest.load_generic_json_coders(api)
+    rest.load_generic_error_handler(api)
+    rest.load_blueprints_by_path(api, blueprints_path)
 
-        def post(self):
-            return {
-                "status": "Posted new data"
-            }
-
-    return _app
+    return app
