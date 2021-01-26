@@ -6,13 +6,24 @@ Template de Python 3 para proyectos base, utliza las librerias del repo de [este
 
 ## :tada: Uso
 
-Solo es necesario ejecutar el archivo `app.py` con python
+Solo es necesario entrar en `src` y ejecutar el archivo `app.py` con python.
+
+### Estructura
+
+- La carpeta *consume* corresponde a todo lo que la aplicacion necesita para funcionar
+
+- La carpeta *produce* es para todo lo generado por la misma como los logs por ejemplo
+
+- La carpeta *logic* contiene el codigo de la aplicacion
 
 ## :books: Levantar un ambiente de desarrollo
 
 Es necesario ejecutar los siguientes comandos en linux:
 
 ```bash
+# pararse dentro de la carpeta src
+cd src
+
 # crear el ambiente virtual
 virtualenv -p python3.8 env
 
