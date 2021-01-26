@@ -1,6 +1,7 @@
 """
 Rest
 ----
+1.0.0
 
 Configura el app de Flask para cargar blueprints dinamicamente, agregar JSON decoders que sigan un estandar, 
 agregar handlers para manejo automatico de errores, entre otros.

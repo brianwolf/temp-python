@@ -1,6 +1,7 @@
 """
 Variables
 ---------
+1.0.0
 
 Utiliza un archivo .env para crear un diccionario usado como variables del proyecto, 
 en caso de que exista la variable de ambiente en el sistema utiliza esa, 

@@ -1,6 +1,7 @@
 """
 Logger
 -------
+1.0.0
 
 Crea logs de la aplicacion
 """

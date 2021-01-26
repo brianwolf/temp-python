@@ -5,7 +5,7 @@ from logic.libs.rest import rest
 api = None
 app = None
 
-blueprints_path = 'logic/apps/*/routes'
+blueprints_path = 'logic/apps/routes'
 
 
 def setup_rest(name: str) -> Flask:

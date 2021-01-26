@@ -1,5 +1,5 @@
 
-from logic.apps.example.models.example import Example
+from logic.apps.models.example import Example
 from datetime import datetime
 from uuid import uuid4
 

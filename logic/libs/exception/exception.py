@@ -1,6 +1,7 @@
 """
 Exception
 ---------
+1.0.0
 
 Objetos genericos para manejo de exepciones en los proyectos
 """
