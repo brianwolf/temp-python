@@ -1,16 +1,32 @@
-from enum import Enum
+from uuid import uuid4
 
-from logic.apps.configs.variables import Variable
-from logic.libs.variables.variables import dame
+from logic.apps.config.sqlite import engine
+from logic.apps.models.example import Example
+from sqlalchemy import Column, DateTime, Float, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
+
+Base = declarative_base()
 
 
-class TipoDB(Enum):
-    SQLITE = 'SQLITE'
-    MONGODB = 'MONGODB'
+class ExampleEntity(Base):
+    __tablename__ = 'examples'
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    string = Column(String)
+    integer = Column(Integer)
+    date_time = Column(DateTime)
+    double = Column(Float)
+    uuid = Column(String)
+
+    def to_model(self) -> Example:
+        return Example(
+            id=self.id,
+            string=self.string,
+            integer=self.integer,
+            date_time=self.date_time,
+            double=self.double,
+            uuid=uuid4(self.uuid)
+        )
 
 
-def tipo_db_usado() -> TipoDB:
-    """
-    Devuelve el tipo de la base de datos usado
-    """
-    return TipoDB[dame(Variable.DB_TIPO).upper()]
+Base.metadata.create_all(engine)
