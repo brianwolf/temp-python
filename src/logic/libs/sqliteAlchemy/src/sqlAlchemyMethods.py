@@ -3,13 +3,11 @@ from pathlib import Path
 
 import sqlalchemy
 from logic.libs.sqliteAlchemy.src import config
-from sqlalchemy.engine import Engine
-from sqlalchemy.orm import Session, sessionmaker
 
 
 def create_engine():
     """
-    Crea un engine usando el metodo create_engine() de sqlAlchemy
+    Crea un engine usando el metodo create_engine() de sqlAlchemy y las configuraciones cargadas en el setup()
     """
     _create_subdirectories(config.URL)
 

@@ -31,10 +31,20 @@ def load_modules_by_path(modules_path: str):
     Es posible pasarle una regex. \n
     Ejemplo:
     ```
+    'logic/apps/routes'
+    ```
+    """
+    for path in load_modules.get_modules_paths(modules_path):
+        get_module_by_path(path)
+
+
+def load_modules_by_regex_path(modules_path: str):
+    """
+    Igual que load_modules_by_path() pero se le puede pasar un regex.\n
+    Ejemplo:
+    ```
     'logic/apps/*/routes'
     ```
     """
-    paths = load_modules.get_modules_paths_by_regex(modules_path)
-
-    for path in paths:
+    for path in load_modules.get_modules_paths_by_regex(modules_path):
         get_module_by_path(path)

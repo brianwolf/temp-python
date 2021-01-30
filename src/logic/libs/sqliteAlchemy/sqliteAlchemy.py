@@ -7,10 +7,11 @@ Utiliza sqlAlchemy para establecer una uncia conexion con un sqlite local, es pa
 """
 from logic.libs.sqliteAlchemy.src import config
 from logic.libs.sqliteAlchemy.src.sqlAlchemyMethods import create_engine
+from sqlalchemy.engine import Engine
 from sqlalchemy.orm import Session, sessionmaker
 
 
-def setup(url: str, echo: bool = False, entities_path: str = None):
+def setup(url: str, echo: bool = False):
     """
     Configura la util, se debe usar antes de usar cualquier otro metodo
 
@@ -19,7 +20,6 @@ def setup(url: str, echo: bool = False, entities_path: str = None):
     """
     config.URL = url
     config.ECHO = echo
-    config.ENTITIES_PATH = entities_path
 
 
 def make_session() -> Session:
@@ -30,3 +30,10 @@ def make_session() -> Session:
         create_engine()
 
     return sessionmaker(config.ENGINE)
+
+
+def get_engine() -> Engine:
+    """
+    Devuelve el engine creado
+    """
+    return config.ENGINE

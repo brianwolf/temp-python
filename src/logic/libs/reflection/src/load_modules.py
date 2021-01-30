@@ -14,7 +14,7 @@ def file_name(path: str) -> str:
     return os.path.basename(path).split('.')[0]
 
 
-def get_modules_path(base_path: str) -> List[str]:
+def get_modules_paths(base_path: str) -> List[str]:
     """
     Obtiene las rutas de todos los archivos .py dentro del directorio parametro, 
     es recursivo por lo que si hay carpetas dentro tambien busca ahi
@@ -42,6 +42,6 @@ def get_modules_paths_by_regex(regex_path: str) -> List[str]:
     paths = []
 
     for base_path in glob.glob(regex_path):
-        paths.extend(get_modules_path(base_path))
+        paths.extend(get_modules_paths(base_path))
 
     return paths

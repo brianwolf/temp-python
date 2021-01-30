@@ -11,6 +11,7 @@ class Vars(Enum):
     LOGS_PATH = 'LOGS_PATH'
     TEMP_PATH = 'TEMP_PATH'
     DB_SQLITE_PATH = 'DB_SQLITE_PATH'
+    DB_SQLITE_LOGS = 'DB_SQLITE_LOGS'
 
 
 def setup_vars():

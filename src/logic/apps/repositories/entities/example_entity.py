@@ -1,7 +1,7 @@
 from uuid import uuid4
 
-from logic.apps.config.sqlite import engine
 from logic.apps.models.example import Example
+from logic.libs.sqliteAlchemy import sqliteAlchemy
 from sqlalchemy import Column, DateTime, Float, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 
@@ -29,4 +29,4 @@ class ExampleEntity(Base):
         )
 
 
-Base.metadata.create_all(engine)
+Base.metadata.create_all(sqliteAlchemy.get_engine())

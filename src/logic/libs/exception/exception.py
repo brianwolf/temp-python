@@ -37,6 +37,7 @@ class AppException(Exception):
 @dataclass
 class UnknownException(Exception):
     """
+    Error desconocido, es basicamente para encapsular nuevos metodos para Exection
     """
     error: Exception
 
