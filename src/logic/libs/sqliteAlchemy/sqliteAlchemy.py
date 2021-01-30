@@ -29,7 +29,7 @@ def make_session() -> Session:
     if not config.ENGINE:
         create_engine()
 
-    return sessionmaker(config.ENGINE)
+    return sessionmaker(config.ENGINE)()
 
 
 def get_engine() -> Engine:

@@ -1,4 +1,4 @@
-from uuid import uuid4
+from uuid import UUID, uuid4
 
 from logic.apps.models.example import Example
 from logic.libs.sqliteAlchemy import sqliteAlchemy
@@ -11,7 +11,7 @@ Base = declarative_base()
 class ExampleEntity(Base):
     __tablename__ = 'examples'
 
-    id = Column(Integer, primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True, autoincrement=True, nullable=True)
     string = Column(String)
     integer = Column(Integer)
     date_time = Column(DateTime)
@@ -25,7 +25,18 @@ class ExampleEntity(Base):
             integer=self.integer,
             date_time=self.date_time,
             double=self.double,
-            uuid=uuid4(self.uuid)
+            uuid=UUID(self.uuid)
+        )
+
+    @staticmethod
+    def from_model(m: Example) -> 'ExampleEntity':
+        return ExampleEntity(
+            id=m.id,
+            string=m.string,
+            integer=m.integer,
+            date_time=m.date_time,
+            double=m.double,
+            uuid=str(m.uuid)
         )
 
 
