@@ -1,25 +1,23 @@
 from enum import Enum
 
-from logic.libs.variables.variables import setup, Config
+from logic.libs.variables.variables import Config, get_var, setup
 
 
 class Vars(Enum):
     VERSION = 'VERSION'
     PYTHON_HOST = 'PYTHON_HOST'
     PYTHON_PORT = 'PYTHON_PORT'
-    NIVEL_LOGS = 'NIVEL_LOGS'
-    DIRECTORIO_LOGS = 'DIRECTORIO_LOGS'
-    DIRECTORIO_SISTEMA_ARCHIVOS = 'DIRECTORIO_SISTEMA_ARCHIVOS'
-    DIRECTORIO_TEMP = 'DIRECTORIO_TEMP'
-    DB_SQLITE_SCRIPT = 'DB_SQLITE_SCRIPT'
-    DB_SQLITE_RUTA = 'DB_SQLITE_RUTA'
-    DB_TIPO = 'DB_TIPO'
+    LOGS_LEVEL = 'LOGS_LEVEL'
+    LOGS_PATH = 'LOGS_PATH'
+    TEMP_PATH = 'TEMP_PATH'
+    DB_SQLITE_PATH = 'DB_SQLITE_PATH'
+    DB_SQLITE_LOGS = 'DB_SQLITE_LOGS'
 
 
 def setup_vars():
     setup([
         Config(
             file_path='consume/config/variables.env',
-            hiden_vars=['NIVEL_LOGS'],
+            hiden_vars=['LOGS_LEVEL'],
             enum_vars=Vars)
     ])

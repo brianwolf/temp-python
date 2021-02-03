@@ -2,14 +2,15 @@ import json
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Dict
-from uuid import UUID
+from uuid import UUID, uuid4
 
-from logic.apps.example.models.example import Example
+from logic.apps.models.example import Example
 
 
 def example_to_json(o: Example) -> Dict[str, object]:
 
     return {
+        'id': o.id,
         'string': o.string,
         'integer': o.integer,
         'date_time': o.date_time.isoformat(),
@@ -25,5 +26,5 @@ def json_to_example(o: Dict[str, object]) -> Example:
         integer=int(o.get('integer')),
         date_time=datetime.fromisoformat(o.get('date_time')),
         double=float(o.get('double')),
-        uuid=UUID(o.get('uuid'))
+        uuid=UUID(o.get('uuid')) if 'uuid' in o else uuid4()
     )

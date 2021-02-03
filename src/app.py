@@ -1,12 +1,12 @@
-from flask import Flask
-
 from logic.apps.config.logger import setup_loggers
 from logic.apps.config.rest import setup_rest
+from logic.apps.config.sqlite import setup_sqlite
 from logic.apps.config.variables import Vars, setup_vars
 from logic.libs.variables.variables import get_var
 
 setup_vars()
 setup_loggers()
+setup_sqlite()
 app = setup_rest(__name__)
 
 
