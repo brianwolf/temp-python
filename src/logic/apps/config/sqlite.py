@@ -5,8 +5,6 @@ from logic.libs.sqliteAlchemy import sqliteAlchemy
 
 def setup_sqlite():
 
-    global engine
-
     sqliteAlchemy.setup(
         url=get_var(Vars.DB_SQLITE_PATH),
         echo=bool(get_var(Vars.DB_SQLITE_LOGS)))
