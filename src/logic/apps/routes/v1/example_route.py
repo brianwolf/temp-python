@@ -1,5 +1,3 @@
-from uuid import uuid4
-
 from flask import request
 from flask_restplus import Resource, fields
 from logic.apps.config.rest import api
